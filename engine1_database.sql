@@ -78,4 +78,27 @@ LEFT JOIN attendance_record ar ON ses.session_id = ar.session_id AND s.usn = ar.
 GROUP BY s.usn, s.student_name, c.course_id, c.course_code
 HAVING total_held > 0;
 
+INSERT INTO faculty (faculty_id, faculty_name, email) VALUES
+(1, 'Prof. Pavankumar Vadavi', 'pavan.vadavi@kletech.ac.in');
 
+INSERT INTO course (course_id, course_code, course_title, total_hours, credits) VALUES
+(101, '24BCA401', 'Database Management Systems', 52, 4);
+
+INSERT INTO student (usn, student_name, semester, section, email) VALUES
+('01FE24BCA274', 'Soumya Sunkad', 5, 'A', 'soumya.sunkad@kletech.ac.in'),
+('01FE24BCA275', 'Divya Sunkad', 5, 'A', 'divya.sunkad@kletech.ac.in'),
+('01FE24BCA276', 'Akkamma S R', 5, 'A', 'akkamma.sr@kletech.ac.in');
+
+INSERT INTO attendance_session (session_id, course_id, faculty_id, session_date, period_number) VALUES
+(1, 101, 1, '2026-10-01', 1),
+(2, 101, 1, '2026-10-02', 2);
+(3, 101, 1, '2026-10-03', 3),
+(4, 101, 1, '2026-10-04', 4);
+
+INSERT INTO attendance_record (session_id, usn, status) VALUES
+(1, '01FE24BCA274', 'P'), (1, '01FE24BCA275', 'A'), (1, '01FE24BCA276', 'P'),
+(2, '01FE24BCA274', 'P'), (2, '01FE24BCA275', 'P'), (2, '01FE24BCA276', 'A');
+(3, '01FE24BCA274', 'A'), (1, '01FE24BCA275', 'P'), (1, '01FE24BCA276', 'P'),
+(4, '01FE24BCA274', 'P'), (2, '01FE24BCA275', 'P'), (2, '01FE24BCA276', 'A');
+
+SELECT * FROM view_attendance_shortage;
